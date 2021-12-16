@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "description": "Checking video playback on different platforms",
   "scripts": {
-    "build:samsung": "vite --config vite-config.js build"
+    "tizen:build": "vite --config tizen/vite-config.js build --watch",
+    "tizen:preview": "vite --config tizen/vite-config.js preview"
   },
   "repository": {
     "type": "git",

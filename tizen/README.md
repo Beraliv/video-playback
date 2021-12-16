@@ -10,3 +10,10 @@
 chmod +x web-cli_Tizen_Studio_4.5_macos-64.bin
 ./web-cli_Tizen_Studio_4.5_macos-64.bin
 ```
+
+3. Build and preview
+
+```bash
+pnpm run tizen:build
+pnpm run tizen:preview
+```
