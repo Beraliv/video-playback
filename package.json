@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "Checking video playback on different platforms",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:samsung": "tsc && vite --config vite-config.js build"
   },
   "repository": {
     "type": "git",
