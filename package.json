@@ -1,0 +1,26 @@
+{
+  "name": "video-playback",
+  "version": "0.0.1",
+  "description": "Checking video playback on different platforms",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beraliv/video-playback.git"
+  },
+  "keywords": [
+    "video",
+    "playback"
+  ],
+  "author": "Alexey Berezin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Beraliv/video-playback/issues"
+  },
+  "homepage": "https://github.com/Beraliv/video-playback#readme",
+  "devDependencies": {
+    "typescript": "^4.5.4",
+    "vite": "^2.7.3"
+  }
+}
