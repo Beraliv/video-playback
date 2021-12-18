@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- https://developer.tizen.org/ko/development/tizen-studio/web-tools/configuring-your-app/configuration-editor?langredirect=1 -->
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="${SECURITY_PROFILE_NAME}" version="0.0.1" height="1080" width="1920" viewmodes="maximized">
+    <content src="index.html"/>
+    <description xml:lang="en">Tizen Video Playback</description>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>${SECURITY_PROFILE_NAME}</name>
+
+    <!-- Tizen Application – 2.3 (Tizen 2015) -->
+    <tizen:application id="${WGT_NAME}.WITs" package="${WGT_NAME}" required_version="2.3"/>
+    <tizen:metadata key="http://samsung.com/tv/metadata/multitasking.support" value="true"/>
+    <!-- Developer API version – 2.4 (Tizen 2015) -->
+    <tizen:metadata key="http://samsung.com/tv/metadata/devel.api.version" value="2.4"/>
+
+    <!-- Tizen priviliges – https://www.tizen.org/ko/privilege -->
+    <!-- Allows the application to capture the key events of an input device, e.g. TV remote control, and release key grabbing -->
+    <tizen:privilege name="http://tizen.org/privilege/tv.inputdevice"/>
+    <!-- Allows the application to access the Internet -->
+    <tizen:privilege name="http://tizen.org/privilege/internet"/>
+    <!--
+        Allows the application to play DRM-protected videos
+        https://developer.samsung.com/smarttv/develop/extension-libraries/nacl/managing-nacl-projects/adding-privileges-and-permissions.html
+     -->
+    <tizen:privilege name="http://developer.samsung.com/privilege/drmplay"/>
+    <!--
+        deprecated: Allows the application to change the volume, enable and disable Silent mode, detect volume changes, and play beeps
+        https://www.tizen.org/ko/privilege?langredirect=1#privilege/tv.audio
+    -->
+    <tizen:privilege name="http://tizen.org/privilege/tv.audio"/>
+
+    <!-- Used to control network access from within a Web application and to request access to certain network resources from the user agent -->
+    <access origin="*" subdomains="true"></access>
+    <!-- Used to define a list of URL domains that are allowed to be navigated in using the Web application -->
+    <tizen:allow-navigation>*</tizen:allow-navigation>
+    <!-- Used to define an additional content security policy for a packaged or hosted application -->
+    <tizen:content-security-policy>*</tizen:content-security-policy>
+
+    <!-- Used to define the application profile -->
+    <tizen:profile name="tv"/>
+
+    <!-- Viewport orientation is locked to "landscape" -->
+    <tizen:setting screen-orientation="landscape"/>
+    <!-- Context menu is displayed when the user clicks, for example, an image, text, or link -->
+    <tizen:setting context-menu="enable"/>
+    <!-- Web application execution is suspended when the application is sent to the background -->
+    <tizen:setting background-support="disable"/>
+    <!--Web applications resources are stored un-encrypted by the WRT-->
+    <tizen:setting encryption="disable"/>
+    <!-- Installation location is set to "auto" -->
+    <tizen:setting install-location="auto"/>
+    <!--Hardware key event is sent to the Web application when the hardware key is pressed-->
+    <tizen:setting hwkey-event="enable"/>
+
+    <!-- 
+        Used to indicate that the Web application can handle a specific operation with the specified MIME type and URI
+        https://developer.tizen.org/ko/development/guides/web-application/application-management/application-information-and-controls/application-controls?langredirect=1
+     -->
+    <tizen:app-control>
+        <!-- 
+            Disable reloading the application main page when it receives an application control request.
+            This allows your application, if it is already running, to receive the "action_data" information without reloading.
+         -->
+        <tizen:src name='index.html' reload='disable'></tizen:src>
+        <tizen:operation name='http://samsung.com/appcontrol/operation/eden_resume'></tizen:operation>
+    </tizen:app-control>
+</widget>
