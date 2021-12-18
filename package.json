@@ -5,7 +5,8 @@
   "scripts": {
     "tizen:build": "vite --config tizen/vite-config.js build --watch",
     "tizen:preview": "vite --config tizen/vite-config.js preview",
-    "tizen:run": "cross-env TS_NODE_PROJECT=\"tsconfig.ts-node.json\" TS_NODE_TRANSPILE_ONLY=true TS_NODE_SKIP_IGNORE=true node -r ts-node/register --max-old-space-size=4096 tizen/run-app.ts beraliv beraliv tizen/public/key.p12 dist/tizen"
+    "ts-node": "cross-env TS_NODE_PROJECT=\"tsconfig.ts-node.json\" TS_NODE_TRANSPILE_ONLY=true TS_NODE_SKIP_IGNORE=true node -r ts-node/register --max-old-space-size=4096",
+    "tizen:run": "pnpm run ts-node tizen/run-app.ts"
   },
   "repository": {
     "type": "git",

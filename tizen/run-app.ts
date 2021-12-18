@@ -1,20 +1,20 @@
 import { execSync } from "child_process";
-import { address } from "ip";
-
-const [
-  ,
-  ,
+import {
   SECURITY_PROFILE_NAME,
   SECURITY_PROFILE_PASSWORD,
   AUTHOR_CERTIFICATE_PATH,
   BUILD_OUTPUT_PATH,
-] = process.argv;
+  TV_IP,
+} from "./.app-example";
 
 // TODO: generate it based on SECURITY_PROFILE_NAME
 const WGT_NAME = "beraliv000";
 
-const exitWithError = (message: string, ...args: unknown[]) => {
-  console.error(message, ...args);
+const exitWithError = (message: string, error?: unknown) => {
+  console.error(message);
+  if (error) {
+    console.error(error);
+  }
   process.exit(1);
 };
 
@@ -43,8 +43,7 @@ try {
   console.log("✅ AUTHOR_CERTIFICATE_PATH is provided and exists");
 } catch {
   exitWithError(
-    `❌ AUTHOR_CERTIFICATE doesn't exist, please check the path`,
-    AUTHOR_CERTIFICATE_PATH
+    `❌ AUTHOR_CERTIFICATE doesn't exist, please check the path ${AUTHOR_CERTIFICATE_PATH}`
   );
 }
 
@@ -100,14 +99,13 @@ try {
   exitWithError("❌ Cannot disconnect", error);
 }
 
-const ip = address();
 try {
-  execSync(`sdb connect ${ip}`, {
+  execSync(`sdb connect ${TV_IP}`, {
     stdio: "inherit",
   });
-  console.log(`✅ Successfully connected to ${ip}`);
+  console.log(`✅ Successfully connected to ${TV_IP}`);
 } catch (error: unknown) {
-  exitWithError(`❌ Cannot connect to ${ip}`, error);
+  exitWithError(`❌ Cannot connect to ${TV_IP}`, error);
 }
 
 try {
