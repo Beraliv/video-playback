@@ -25,3 +25,17 @@ export PATH="$HOME/tizen-studio/tools/ide/bin:$HOME/tizen-studio/tools:$PATH"
 pnpm run tizen:build
 pnpm run tizen:preview
 ```
+
+4. Create a certificate for you TV app
+
+<!-- TODO: how to create certificate -->
+
+5. Enter laptop IP on your TV
+
+<!-- TODO: how to enter IP on your TV -->
+
+6. Run it on your TV
+
+```bash
+pnpm run tizen:run
+```
