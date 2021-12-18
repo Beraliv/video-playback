@@ -1,18 +1,23 @@
-const { resolve } = require('path')
-const { defineConfig } = require('vite')
-
-export default defineConfig({
-    build: {
-        watch: {},
-        rollupOptions: {
-            input: {
-                tizen: resolve(__dirname, 'index.html')
-            }
-        }
+// @ts-check
+const { resolve } = require("path");
+/**
+ * @type {import('vite').UserConfig}
+ */
+const config = {
+  build: {
+    rollupOptions: {
+      input: {
+        tizen: resolve(__dirname, "index.html"),
+      },
     },
-	preview: {
-		host: true,
-		open: '/tizen',
-		port: 9000,
-	},
-})
+    watch: {},
+  },
+  preview: {
+    host: true,
+    open: "/tizen",
+    port: 9000,
+  },
+  publicDir: "tizen/public",
+};
+
+export default config;
